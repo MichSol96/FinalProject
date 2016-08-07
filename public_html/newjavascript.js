@@ -237,12 +237,14 @@ function selectOpacity(obj) {
 //draws lines
 function drawLine() {
     ctx.beginPath();
+    ctx.lineJoin = "round";
+    ctx.globalAlpha = m;
     ctx.moveTo(prevX, prevY);
     ctx.lineTo(currX, currY);
     ctx.strokeStyle = x;
     ctx.lineWidth = y;
-    ctx.stroke();
     ctx.closePath();
+    ctx.stroke();
 }
 
 //draw small solid square
