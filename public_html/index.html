@@ -6,11 +6,75 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Coloring Book</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="stylesheet1.css">
+
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body onload="init()">
+
+
+        <div id='content'>
+            <h1>Draw Away!</h1>
+            <p>
+                By default, line is selected, to change shapes, click on the shape you want. To pick the opacity or line thickness, 
+                you need to select it first and then pick the color you want to draw in. To clear the whole canvas, click the "clear"
+                button. To undo the last action, click the "undo" button.
+
+            </p>
+            <canvas id="theCanvas" width="1100" height="500">
+                Your browser does not support the HTML5 canvas tag.
+            </canvas>
+
+            <div id="panel">
+                <div id="colorSelection">Choose Color</div>
+                <div class="colors" id="green" onclick="color(this)"></div>
+                <div class="colors" id="blue" onclick="color(this)"></div>
+                <div class="colors" id="red" onclick="color(this)"></div>
+                <div class="colors" id="yellow" onclick="color(this)"></div>
+                <div class="colors" id="orange" onclick="color(this)"></div>
+                <div class="colors" id="black" onclick="color(this)"></div>
+
+                <div id="brushSelection">Choose Thickness</div>
+                <div id="thin" onclick="selectThickness(this)"><div id="insideThin"></div></div>
+                <div id="thicker" onclick="selectThickness(this)"><div id="insideThicker"></div></div>
+                <div id="thickest" onclick="selectThickness(this)"><div id="insideThickest"></div></div>
+
+                <div id="shapeSelection">Choose Shape</div>
+                <div id="circleSOutline" onclick="selectShape(this)"><div id="insideSCircleOutline"></div></div>
+                <div id="squareSOutline" onclick="selectShape(this)"><div id="insideSSquareOutline"></div></div>
+                <div id="circleSSolid" onclick="selectShape(this)"><div id="insideSCircleSolid"></div></div>
+                <div id="squareSSolid" onclick="selectShape(this)"><div id="insideSSquareSolid"></div></div>
+
+                <div id="circleLOutline" onclick="selectShape(this)"><div id="insideLCircleOutline"></div></div>
+                <div id="squareLOutline" onclick="selectShape(this)"><div id="insideLSquareOutline"></div></div>
+                <div id="circleLSolid" onclick="selectShape(this)"><div id="insideLCircleSolid"></div></div>
+                <div id="squareLSolid" onclick="selectShape(this)"><div id="insideLSquareSolid"></div></div>
+
+                <div id="line" onclick="selectShape(this)"><div id="insideLine"></div></div> 
+
+                <div id="opacitySelction" >Choose Opacity</div>
+                <div id="fullOpacity" onclick="selectOpacity(this)"></div>
+                <div id="halfOpacity" onclick="selectOpacity(this)"></div>
+                <div id="twentyPerOpacity" onclick="selectOpacity(this)"></div>
+
+            </div>
+
+            <div id="eraser">Eraser</div>
+            <div class="colors" id="white" onclick="color(this)"></div>
+
+            <input type="button" value="clear" id="clr" onclick="erase()">
+            <input type="button" value="undo" id="undo" onclick="undo()">
+            <input type="button" value="save" id="save" onclick="save()">
+            <img id="canvasimg" >
+            
+
+            <script src="newjavascript.js"></script>
+            <footer>Copyright © Michelle Solon</footer>
+        </div>
+
+
+
     </body>
 </html>
