@@ -38,7 +38,7 @@ p{
     top: 0px;
     left: 0px;
     height: 501.5px;
-    width: 100px;
+    width: 150px;
     border: solid 1px black;
 }
 
@@ -137,7 +137,7 @@ p{
 
 #clr{
     position:relative;
-    top:-120px;
+    top:-190px;
     left:5px;
 }
 
@@ -150,13 +150,13 @@ p{
 
 #undo{
     position: relative;
-    top: -100px;
+    top: -150px;
     left: -45px;
 }
 
 #save{
     position: relative;
-    top:-80px;
+    top:-110px;
     left:-95px;
 }
 
@@ -412,40 +412,6 @@ p{
 }
 
 
-#fullOpacity{
-    position: relative;
-    background-color: lightgray;
-    opacity: 1;
-    border: 1px solid;
-    height: 15px;
-    width: 15px;
-    top: -130px;
-    left: 5px;
-}
-
-#halfOpacity{
-    position: relative;
-    background-color: lightgray;
-    opacity: .6;
-    border: 1px solid;
-    height: 15px;
-    width: 15px;
-    top: -147px;
-    left: 25px;
-}
-
-#twentyPerOpacity{
-    position: relative;
-    background-color: lightgray;
-    opacity: .2;
-    border: 1px solid;
-    height: 15px;
-    width: 15px;
-    top: -164px;
-    left: 44.5px;
-}
-
-
 footer{
     margin-top: 15px;
     background-color: #542F24;
@@ -458,4 +424,12 @@ footer{
     text-align: center;
     color: white;
     border-radius: 30px;
+}
+
+.white{
+    background-color: white;
+}
+#myRange{
+    position:relative;
+    top:-120px;
 }
