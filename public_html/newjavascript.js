@@ -347,6 +347,7 @@ function erase() {
     if (k) {
         ctx.clearRect(0, 0, w, h);
         cPush();
+        document.getElementById("theCanvas").style.background = 'white'; //keeps the white background up after clear (can change that if we decide to make background color changes an option)
     }
 }
 
