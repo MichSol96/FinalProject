@@ -55,11 +55,11 @@ and open the template in the editor.
                 <div id="line" onclick="selectShape(this)"><div id="insideLine"></div></div> 
 
                 <div id="opacitySelction" >Choose Opacity</div>
-                <div id="fullOpacity" onclick="selectOpacity(this)"></div>
-                <div id="halfOpacity" onclick="selectOpacity(this)"></div>
-                <div id="twentyPerOpacity" onclick="selectOpacity(this)"></div>
+                <input type ="range" id="myRange" max ="1" min="0.1" value = "1" step="0.1" >
 
             </div>
+            
+                
 
             <div id="eraser">Eraser</div>
             <div class="colors" id="white" onclick="color(this)"></div>
@@ -78,3 +78,4 @@ and open the template in the editor.
 
     </body>
 </html>
+
