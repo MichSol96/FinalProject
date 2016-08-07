@@ -368,6 +368,7 @@ function undo() {
             ctx.drawImage(canvasPic, 0, 0);
         };
     }
+    document.getElementById("theCanvas").style.background = 'white';
 }
 
 function save() {
