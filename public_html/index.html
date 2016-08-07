@@ -29,12 +29,9 @@ and open the template in the editor.
 
             <div id="panel">
                 <div id="colorSelection">Choose Color</div>
-                <div class="colors" id="green" onclick="color(this)"></div>
-                <div class="colors" id="blue" onclick="color(this)"></div>
-                <div class="colors" id="red" onclick="color(this)"></div>
-                <div class="colors" id="yellow" onclick="color(this)"></div>
-                <div class="colors" id="orange" onclick="color(this)"></div>
-                <div class="colors" id="black" onclick="color(this)"></div>
+                <div id="red">R: <input type="range" id="redRange" max="255" min="0" value="0" step="1"></div>
+                <div id="green">G: <input type="range" id="greenRange" max="255" min="0" value="0" step="1"></div>
+                <div id="blue">B: <input type="range" id="blueRange" max="255" min="0" value="0" step="1"></div>
 
                 <div id="brushSelection">Choose Thickness</div>
                 <div id="thin" onclick="selectThickness(this)"><div id="insideThin"></div></div>
@@ -55,7 +52,7 @@ and open the template in the editor.
                 <div id="line" onclick="selectShape(this)"><div id="insideLine"></div></div> 
 
                 <div id="opacitySelction" >Choose Opacity</div>
-                <input type ="range" id="myRange" max ="1" min="0.1" value = "1" step="0.1" >
+                <input type ="range" id="opacityRange" max ="1" min="0.1" value = "1" step="0.1" >
 
             </div>
             

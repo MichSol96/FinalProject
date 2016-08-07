@@ -92,47 +92,12 @@ p{
     font-family: 'Gloria Hallelujah', cursive;
 }
 
-#black{
-    top: -75px;
-    left: 5px;
-    background:black;
-}
-
-#blue{
-    top:-27px;
-    left:5px;
-    background:blue;
-}
-
-#green{
-    top:-10px;
-    left:25px;
-    background:green;
-}
-
-#orange{
-    top:-78px;
-    left:44.5px;
-    background:orange;
-}
-
-#red{
-    top:-24px;
-    left:25px;
-    background:red;
-}
 
 #white{
-    top:-440px;
+    top:-420px;
     left:5px;
     background:white;
 
-}
-
-#yellow{
-    top:-41px;
-    left:44.5px;
-    background:yellow;
 }
 
 #clr{
@@ -144,7 +109,7 @@ p{
 #eraser{
     color: white;
     position: relative;
-    top: -435px;
+    top: -420px;
     left: 5px;
 }
 
@@ -429,7 +394,66 @@ footer{
 .white{
     background-color: white;
 }
-#myRange{
+#opacityRange{
     position:relative;
     top:-120px;
+    left: 5px;
 }
+
+#red{
+    position: relative;
+    top:-10px;
+    color: white;
+    font-size: 75%;
+    width:95px;
+    left: 5px;
+}
+
+#redRange{
+    position: relative;
+    left: 10px;
+    top: -20px;
+}
+
+#green{
+    position: relative;
+    top: -40px;
+    color: white;
+    font-size: 75%;
+    left: 5px;
+    width: 95px;
+}
+
+#greenRange{
+    position: relative;
+    left: 10px;
+    top: -20px;
+    
+}
+
+#blue{
+    position: relative;
+    top: -70px;
+    color: white;
+    font-size: 75%;
+    left: 5px;
+    width: 95px;
+}
+
+#blueRange{
+    position: relative;
+    top: -20px;
+    left: 10px;
+  
+}
+
+#colorSliders{
+    color: white;
+    font-size: 75%;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    
+    position: relative;
+    
+}  

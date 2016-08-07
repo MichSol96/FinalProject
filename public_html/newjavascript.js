@@ -228,7 +228,7 @@ function selectShape(obj) {
 
 //draws lines
 function drawLine() {
-    var q = document.getElementById("myRange").value; //gets opacity value
+    var q = document.getElementById("opacityRange").value; //gets opacity value
     ctx.beginPath();
     ctx.lineJoin = "round";
     ctx.globalAlpha = q; //sets opacity value
