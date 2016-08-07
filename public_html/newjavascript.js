@@ -12,10 +12,9 @@ var canvas, ctx, flag = false,
         currY = 0,
         dotFlag = false;
 
+var q, r, b, g, y = 2;
 
-
-var m = 1, x = "rgba(0, 0, 0, " + m + ")", y = 2;
-
+var white, erase;
 
 //tracks changes to the canvas for the undo function
 var cPushArray = [];
@@ -38,20 +37,22 @@ var lCircleOut = false,
 function init() {
     canvas = document.getElementById('theCanvas');
     ctx = canvas.getContext("2d");
-   // context = document.getElementById('theCanvas').getContext("2d");
     w = canvas.width;
     h = canvas.height;
-    
+
+    erase = false;
+    white = document.getElementById("white");
+
     ctx.save();
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, w, h);
     ctx.restore();
-    
+
     var background = new Image();
     background.src = 'flowerOutline.jpg';
     window.onload = function () {
-            ctx.drawImage(background, 300, 300, 300, 300);
-        };
+        ctx.drawImage(background, 300, 300, 300, 300);
+    };
     cPush();
 
     canvas.addEventListener("mousemove", function (e) {
@@ -71,34 +72,11 @@ function init() {
 //colors the object
 function color(obj) {
     switch (obj.id) {
-        case "green":
-            x = "rgba(0, 128, 0, " + m + ")";
-            break;
-        case "blue":
-            x = "rgba(0, 0, 255, " + m + ")";
-            break;
-        case "red":
-            x = "rgba(255, 0, 0, " + m + ")";
-            break;
-        case "yellow":
-            x = "rgba(255, 255, 0, " + m + ")";
-            break;
-        case "orange":
-            x = "rgba(255, 165, 0, " + m + ")";
-            break;
-        case "black":
-            x = "rgba(0 ,0, 0, " + m + ")";
-            break;
         case "white":
-            x = "white";
+            erase = true;
+            y = 14;
             break;
     }
-    if (x === "white") {
-        line = true;
-        y = 14;
-        m = 1;
-    }
-
 
 }
 
@@ -228,17 +206,30 @@ function selectShape(obj) {
 
 //draws lines
 function drawLine() {
-    var q = document.getElementById("opacityRange").value; //gets opacity value
+
     ctx.beginPath();
     ctx.lineJoin = "round";
+
+    if (erase) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+    }
+
     ctx.globalAlpha = q; //sets opacity value
     ctx.moveTo(prevX, prevY);
     ctx.lineTo(currX, currY);
-    ctx.strokeStyle = x;
+    ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.lineWidth = y;
     ctx.closePath();
     ctx.stroke();
-    
+
 }
 
 //draw small solid square
@@ -246,8 +237,22 @@ function drawSmallSolidSquare() {
 
     ctx.beginPath();
     ctx.moveTo(currX, currY);
+
+    if (erase) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+    }
+
+    ctx.globalAlpha = q;
     ctx.fillRect(currX, currY, 40, 40);
-    ctx.fillStyle = x;
+    ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.fill();
     ctx.closePath();
 }
@@ -257,8 +262,22 @@ function drawLargeSolidSquare() {
 
     ctx.beginPath();
     ctx.moveTo(currX, currY);
+
+    if (erase) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+    }
+
+    ctx.globalAlpha = q;
     ctx.fillRect(currX, currY, 100, 100);
-    ctx.fillStyle = x;
+    ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.fill();
     ctx.closePath();
     return true;
@@ -269,8 +288,22 @@ function drawSmallOutlineSquare() {
 
     ctx.beginPath();
     ctx.moveTo(currX, currY);
+
+    if (erase) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+    }
+
+    ctx.globalAlpha = q;
     ctx.strokeRect(currX, currY, 40, 40);
-    ctx.strokeStyle = x;
+    ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.lineWidth = y;
     ctx.stroke();
     ctx.closePath();
@@ -282,8 +315,22 @@ function drawLargeOutlineSquare() {
 
     ctx.beginPath();
     ctx.moveTo(currX, currY);
+
+    if (erase) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+    }
+
+    ctx.globalAlpha = q;
     ctx.strokeRect(currX, currY, 100, 100);
-    ctx.strokeStyle = x;
+    ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.lineWidth = y;
     ctx.stroke();
     ctx.closePath();
@@ -295,7 +342,21 @@ function drawSmallSolidCircle() {
 
     ctx.beginPath();
     ctx.arc(currX, currY, 40, 0, 2 * Math.PI, false);
-    ctx.fillStyle = x;
+
+   if (erase) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+    }
+
+    ctx.globalAlpha = q;
+    ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.fill();
     ctx.closePath();
 
@@ -306,7 +367,21 @@ function drawLargeSolidCircle() {
 
     ctx.beginPath();
     ctx.arc(currX, currY, 100, 0, 2 * Math.PI, false);
-    ctx.fillStyle = x;
+
+    if (erase) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+    }
+
+    ctx.globalAlpha = q;
+    ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.fill();
     ctx.closePath();
 
@@ -317,8 +392,22 @@ function drawSmallOutlineCircle() {
 
     ctx.beginPath();
     ctx.arc(currX, currY, 40, 0, 2 * Math.PI, false);
+
+    if (erase) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+    }
+
+    ctx.globalAlpha = q;
     ctx.lineWidth = y;
-    ctx.strokeStyle = x;
+    ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.stroke();
     ctx.closePath();
 
@@ -329,8 +418,22 @@ function drawLargeOutlineCircle() {
 
     ctx.beginPath();
     ctx.arc(currX, currY, 100, 0, 2 * Math.PI, false);
+
+    if (erase) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+    }
+
+    ctx.globalAlpha = q;
     ctx.lineWidth = y;
-    ctx.strokeStyle = x;
+    ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.stroke();
     ctx.closePath();
 }
@@ -341,9 +444,9 @@ function erase() {
     if (k) {
         ctx.clearRect(0, 0, w, h);
         cPush();
-         document.getElementById("theCanvas").style.background = 'white'; 
+        document.getElementById("theCanvas").style.background = 'white';
     }
-   
+
 }
 
 //pushes the current canvas onto an array of images
@@ -372,11 +475,11 @@ function undo() {
 }
 
 function save() {
-        document.getElementById("canvasimg").style.border = "2px solid";
-        var dataURL = canvas.toDataURL();
-        document.getElementById("canvasimg").src = dataURL;
-        document.getElementById("canvasimg").style.display = "inline";
-    }
+    document.getElementById("canvasimg").style.border = "2px solid";
+    var dataURL = canvas.toDataURL();
+    document.getElementById("canvasimg").src = dataURL;
+    document.getElementById("canvasimg").style.display = "inline";
+}
 
 //this is how it finds the current (x, y) coordinate of the mouse so it will draw the line/shape in that place
 function findxy(res, e) {
