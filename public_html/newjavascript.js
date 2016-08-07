@@ -237,8 +237,8 @@ function selectOpacity(obj) {
 //draws lines
 function drawLine() {
     ctx.beginPath();
-    ctx.lineJoin = "round";
-    ctx.globalAlpha = m;
+    ctx.lineJoin = "round";  //rounded freedraw lines
+    ctx.globalAlpha = m; //Opacity
     ctx.moveTo(prevX, prevY);
     ctx.lineTo(currX, currY);
     ctx.strokeStyle = x;
