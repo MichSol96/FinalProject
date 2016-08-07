@@ -12,7 +12,10 @@ var canvas, ctx, flag = false,
         currY = 0,
         dotFlag = false;
 
+
+
 var m = 1, x = "rgba(0, 0, 0, " + m + ")", y = 2;
+
 
 //tracks changes to the canvas for the undo function
 var cPushArray = [];
@@ -35,9 +38,10 @@ var lCircleOut = false,
 function init() {
     canvas = document.getElementById('theCanvas');
     ctx = canvas.getContext("2d");
+   // context = document.getElementById('theCanvas').getContext("2d");
     w = canvas.width;
     h = canvas.height;
-
+    
     ctx.save();
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, w, h);
@@ -97,6 +101,7 @@ function color(obj) {
 
 
 }
+
 
 //changes the brush thickness
 function selectThickness(obj) {
@@ -220,31 +225,20 @@ function selectShape(obj) {
     }
 }
 
-//changes the opacity
-function selectOpacity(obj) {
-    switch (obj.id) {
-        case "fullOpacity":
-            m = 1;
-            break;
-        case "halfOpacity":
-            m = 0.6;
-            break;
-        case "twentyPerOpacity":
-            m = 0.2;
-            break;
-    }
-}
+
 //draws lines
 function drawLine() {
+    var q = document.getElementById("myRange").value; //gets opacity value
     ctx.beginPath();
-    ctx.lineJoin = "round";  //rounded freedraw lines
-    ctx.globalAlpha = m; //Opacity
+    ctx.lineJoin = "round";
+    ctx.globalAlpha = q; //sets opacity value
     ctx.moveTo(prevX, prevY);
     ctx.lineTo(currX, currY);
     ctx.strokeStyle = x;
     ctx.lineWidth = y;
     ctx.closePath();
     ctx.stroke();
+    
 }
 
 //draw small solid square
@@ -347,8 +341,9 @@ function erase() {
     if (k) {
         ctx.clearRect(0, 0, w, h);
         cPush();
-        document.getElementById("theCanvas").style.background = 'white'; //keeps the white background up after clear (can change that if we decide to make background color changes an option)
+         document.getElementById("theCanvas").style.background = 'white'; 
     }
+   
 }
 
 //pushes the current canvas onto an array of images
