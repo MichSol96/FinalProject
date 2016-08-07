@@ -52,7 +52,7 @@ p{
 #brushSelection{
     color: white;
     position: relative;
-    top: -15px;
+    top: -25px;
     left: 2px;
 }
 
@@ -447,13 +447,9 @@ footer{
   
 }
 
-#colorSliders{
-    color: white;
-    font-size: 75%;
-    margin: 0px;
-    padding: 0px;
-    border: 0px;
-    
+
+#brushRange{
     position: relative;
-    
-}  
+    left: 5px;
+    top: -30px;
+}

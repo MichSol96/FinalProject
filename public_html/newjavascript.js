@@ -12,7 +12,7 @@ var canvas, ctx, flag = false,
         currY = 0,
         dotFlag = false;
 
-var q, r, b, g, y = 2;
+var q, r, b, g, y;
 
 var white, erase;
 
@@ -74,28 +74,11 @@ function color(obj) {
     switch (obj.id) {
         case "white":
             erase = true;
-            y = 14;
             break;
     }
 
 }
 
-
-//changes the brush thickness
-function selectThickness(obj) {
-    switch (obj.id) {
-        case "thin":
-            y = 2;
-            break;
-        case "thicker":
-            y = 5;
-            break;
-        case "thickest":
-            y = 8;
-            break;
-
-    }
-}
 
 //changes the shape
 function selectShape(obj) {
@@ -215,21 +198,25 @@ function drawLine() {
         g = 255;
         b = 255;
         q = 1;
+        y = 14;
     } else {
         q = document.getElementById("opacityRange").value; //gets opacity value
         r = document.getElementById("redRange").value; //gets red value
         g = document.getElementById("greenRange").value; // gets green value
         b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
     }
 
+    
     ctx.globalAlpha = q; //sets opacity value
     ctx.moveTo(prevX, prevY);
     ctx.lineTo(currX, currY);
     ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.lineWidth = y;
+    
     ctx.closePath();
     ctx.stroke();
-
+   
 }
 
 //draw small solid square
@@ -243,11 +230,13 @@ function drawSmallSolidSquare() {
         g = 255;
         b = 255;
         q = 1;
+        y = 14;
     } else {
         q = document.getElementById("opacityRange").value; //gets opacity value
         r = document.getElementById("redRange").value; //gets red value
         g = document.getElementById("greenRange").value; // gets green value
         b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
     }
 
     ctx.globalAlpha = q;
@@ -268,11 +257,13 @@ function drawLargeSolidSquare() {
         g = 255;
         b = 255;
         q = 1;
+        y = 14;
     } else {
         q = document.getElementById("opacityRange").value; //gets opacity value
         r = document.getElementById("redRange").value; //gets red value
         g = document.getElementById("greenRange").value; // gets green value
         b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
     }
 
     ctx.globalAlpha = q;
@@ -294,11 +285,13 @@ function drawSmallOutlineSquare() {
         g = 255;
         b = 255;
         q = 1;
+        y = 14;
     } else {
         q = document.getElementById("opacityRange").value; //gets opacity value
         r = document.getElementById("redRange").value; //gets red value
         g = document.getElementById("greenRange").value; // gets green value
         b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
     }
 
     ctx.globalAlpha = q;
@@ -321,11 +314,13 @@ function drawLargeOutlineSquare() {
         g = 255;
         b = 255;
         q = 1;
+        y = 14;
     } else {
         q = document.getElementById("opacityRange").value; //gets opacity value
         r = document.getElementById("redRange").value; //gets red value
         g = document.getElementById("greenRange").value; // gets green value
         b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
     }
 
     ctx.globalAlpha = q;
@@ -348,11 +343,13 @@ function drawSmallSolidCircle() {
         g = 255;
         b = 255;
         q = 1;
+        y = 14;
     } else {
         q = document.getElementById("opacityRange").value; //gets opacity value
         r = document.getElementById("redRange").value; //gets red value
         g = document.getElementById("greenRange").value; // gets green value
         b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
     }
 
     ctx.globalAlpha = q;
@@ -373,11 +370,13 @@ function drawLargeSolidCircle() {
         g = 255;
         b = 255;
         q = 1;
+        y = 14;
     } else {
         q = document.getElementById("opacityRange").value; //gets opacity value
         r = document.getElementById("redRange").value; //gets red value
         g = document.getElementById("greenRange").value; // gets green value
         b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
     }
 
     ctx.globalAlpha = q;
@@ -398,11 +397,13 @@ function drawSmallOutlineCircle() {
         g = 255;
         b = 255;
         q = 1;
+        y = 14;
     } else {
         q = document.getElementById("opacityRange").value; //gets opacity value
         r = document.getElementById("redRange").value; //gets red value
         g = document.getElementById("greenRange").value; // gets green value
         b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
     }
 
     ctx.globalAlpha = q;
@@ -424,11 +425,13 @@ function drawLargeOutlineCircle() {
         g = 255;
         b = 255;
         q = 1;
+        y = 14;
     } else {
         q = document.getElementById("opacityRange").value; //gets opacity value
         r = document.getElementById("redRange").value; //gets red value
         g = document.getElementById("greenRange").value; // gets green value
         b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
     }
 
     ctx.globalAlpha = q;
@@ -540,6 +543,7 @@ function findxy(res, e) {
     if (res === 'up' || res === "out") {
         cPush();
         flag = false;
+        erase = false;
     }
     if (res === 'move') {
         if (flag) {
