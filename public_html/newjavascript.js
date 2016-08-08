@@ -31,7 +31,7 @@ var lCircleOut = false,
         sSquareSolid = false,
         line = true;
 
-
+var theBackground = new Image();
 
 //adds event listeners so that you can draw on the canvas
 function init() {
@@ -48,10 +48,9 @@ function init() {
     ctx.fillRect(0, 0, w, h);
     ctx.restore();
 
-    var theBackground = new Image();
-    theBackground.src = 'flowerOutline.jpg';
-    window.onload = function () {
-        ctx.drawImage(theBackground, 300, 300, 300, 300);
+    theBackground.src = "images/flowerOutline.jpg";
+    theBackground.onload = function () {
+        ctx.drawImage(theBackground, 0, 0, w, h);
     };
     cPush();
 
@@ -206,16 +205,16 @@ function drawLine() {
         y = document.getElementById("brushRange").value; //gets line thickness value
     }
 
-    
+
     ctx.globalAlpha = q; //sets opacity value
     ctx.moveTo(prevX, prevY);
     ctx.lineTo(currX, currY);
     ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.lineWidth = y;
-    
+
     ctx.closePath();
     ctx.stroke();
-   
+
 }
 //draw small solid square
 function drawSmallSolidSquare() {
@@ -336,7 +335,7 @@ function drawSmallSolidCircle() {
     ctx.beginPath();
     ctx.arc(currX, currY, 40, 0, 2 * Math.PI, false);
 
-   if (eraser) {
+    if (eraser) {
         r = 255;
         g = 255;
         b = 255;
@@ -459,6 +458,10 @@ function erase() {
         ctx.clearRect(0, 0, w, h);
         cPush();
         document.getElementById("theCanvas").style.background = 'white';
+        theBackground.src = cPushArray[0];
+        theBackground.onload = function () {
+            ctx.drawImage(theBackground, 0, 0, w, h);
+        };
     }
 }
 
