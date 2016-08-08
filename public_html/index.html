@@ -54,11 +54,10 @@ and open the template in the editor.
                 <div id="line" onclick="selectShape(this)"><div id="insideLine"></div></div> 
 
                 <div id="opacitySelction" >Choose Opacity</div>
-                <input type ="range" id="opacityRange" max ="1" min="0.1" value = "1" step="0.1" >
-
+                <input type ="range" id="opacityRange" max ="1" min="0.1" value = "1" step="0.1">
             </div>
             
-                
+            
 
             <div id="eraser">Eraser</div>
             <div class="colors" id="white" onclick="color(this)"></div>
@@ -67,6 +66,11 @@ and open the template in the editor.
             <input type="button" value="undo" id="undo" onclick="undo()">
             <input type="button" value="save" id="save" onclick="save()">
             <img id="canvasimg" >
+            
+            <div id="panel2">
+                <div id="backgroundSelection">Choose Image</div>
+                <div id ="image" onclick ="backgroundImage()"></div>
+            </div>
             
 
             <script src="newjavascript.js"></script>
@@ -77,4 +81,3 @@ and open the template in the editor.
 
     </body>
 </html>
-
