@@ -12,9 +12,9 @@ var canvas, ctx, flag = false,
         currY = 0,
         dotFlag = false;
 
-var q, r, b, g, y;
+var q, r, b, g, y, x;
 
-var white, erase;
+var white, eraser;
 
 //tracks changes to the canvas for the undo function
 var cPushArray = [];
@@ -40,7 +40,7 @@ function init() {
     w = canvas.width;
     h = canvas.height;
 
-    erase = false;
+    eraser = false;
     white = document.getElementById("white");
 
     ctx.save();
@@ -48,10 +48,10 @@ function init() {
     ctx.fillRect(0, 0, w, h);
     ctx.restore();
 
-    var background = new Image();
-    background.src = 'flowerOutline.jpg';
+    var theBackground = new Image();
+    theBackground.src = 'flowerOutline.jpg';
     window.onload = function () {
-        ctx.drawImage(background, 300, 300, 300, 300);
+        ctx.drawImage(theBackground, 300, 300, 300, 300);
     };
     cPush();
 
@@ -73,12 +73,10 @@ function init() {
 function color(obj) {
     switch (obj.id) {
         case "white":
-            erase = true;
+            eraser = true;
             break;
     }
-
 }
-
 
 //changes the shape
 function selectShape(obj) {
@@ -187,13 +185,14 @@ function selectShape(obj) {
 }
 
 
+
 //draws lines
 function drawLine() {
 
     ctx.beginPath();
     ctx.lineJoin = "round";
 
-    if (erase) {
+    if (eraser) {
         r = 255;
         g = 255;
         b = 255;
@@ -218,14 +217,13 @@ function drawLine() {
     ctx.stroke();
    
 }
-
 //draw small solid square
 function drawSmallSolidSquare() {
 
     ctx.beginPath();
     ctx.moveTo(currX, currY);
 
-    if (erase) {
+    if (eraser) {
         r = 255;
         g = 255;
         b = 255;
@@ -280,7 +278,7 @@ function drawSmallOutlineSquare() {
     ctx.beginPath();
     ctx.moveTo(currX, currY);
 
-    if (erase) {
+    if (eraser) {
         r = 255;
         g = 255;
         b = 255;
@@ -309,7 +307,7 @@ function drawLargeOutlineSquare() {
     ctx.beginPath();
     ctx.moveTo(currX, currY);
 
-    if (erase) {
+    if (eraser) {
         r = 255;
         g = 255;
         b = 255;
@@ -338,7 +336,7 @@ function drawSmallSolidCircle() {
     ctx.beginPath();
     ctx.arc(currX, currY, 40, 0, 2 * Math.PI, false);
 
-   if (erase) {
+   if (eraser) {
         r = 255;
         g = 255;
         b = 255;
@@ -392,7 +390,7 @@ function drawSmallOutlineCircle() {
     ctx.beginPath();
     ctx.arc(currX, currY, 40, 0, 2 * Math.PI, false);
 
-    if (erase) {
+    if (eraser) {
         r = 255;
         g = 255;
         b = 255;
@@ -420,7 +418,7 @@ function drawLargeOutlineCircle() {
     ctx.beginPath();
     ctx.arc(currX, currY, 100, 0, 2 * Math.PI, false);
 
-    if (erase) {
+    if (eraser) {
         r = 255;
         g = 255;
         b = 255;
@@ -441,16 +439,7 @@ function drawLargeOutlineCircle() {
     ctx.closePath();
 }
 
-//clears the entire canvas
-function erase() {
-    var k = confirm("Are you sure you want to erase everything?");
-    if (k) {
-        ctx.clearRect(0, 0, w, h);
-        cPush();
-        document.getElementById("theCanvas").style.background = 'white';
-    }
 
-}
 
 //pushes the current canvas onto an array of images
 function cPush() {
@@ -462,6 +451,17 @@ function cPush() {
     cPushArray.push(canvas.toDataURL());
 
 }
+
+//clears the entire canvas
+function erase() {
+    var k = confirm("Are you sure you want to erase everything?");
+    if (k) {
+        ctx.clearRect(0, 0, w, h);
+        cPush();
+        document.getElementById("theCanvas").style.background = 'white';
+    }
+}
+
 
 //undos using images from the array of saved canvas images
 function undo() {
@@ -543,7 +543,7 @@ function findxy(res, e) {
     if (res === 'up' || res === "out") {
         cPush();
         flag = false;
-        erase = false;
+        eraser = false;
     }
     if (res === 'move') {
         if (flag) {
