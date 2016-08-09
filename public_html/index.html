@@ -37,17 +37,16 @@ and open the template in the editor.
                 <input type="range" id="brushRange" max="8" min="2" value="2" step="1">
 
                 <div id="shapeSelection">Choose Shape</div>
-                <div id="circleSOutline" onclick="selectShape(this)"><div id="insideSCircleOutline"></div></div>
-                <div id="squareSOutline" onclick="selectShape(this)"><div id="insideSSquareOutline"></div></div>
-                <div id="circleSSolid" onclick="selectShape(this)"><div id="insideSCircleSolid"></div></div>
-                <div id="squareSSolid" onclick="selectShape(this)"><div id="insideSSquareSolid"></div></div>
-
-                <div id="circleLOutline" onclick="selectShape(this)"><div id="insideLCircleOutline"></div></div>
-                <div id="squareLOutline" onclick="selectShape(this)"><div id="insideLSquareOutline"></div></div>
-                <div id="circleLSolid" onclick="selectShape(this)"><div id="insideLCircleSolid"></div></div>
-                <div id="squareLSolid" onclick="selectShape(this)"><div id="insideLSquareSolid"></div></div>
-
+                <div id="circleOutline" onclick="selectShape(this)"><div id="insideCircleOutline"></div></div>
+                <div id="squareOutline" onclick="selectShape(this)"><div id="insideSquareOutline"></div></div>
+                <div id="circleSolid" onclick="selectShape(this)"><div id="insideCircleSolid"></div></div>
+                <div id="squareSolid" onclick="selectShape(this)"><div id="insideSquareSolid"></div></div>
                 <div id="line" onclick="selectShape(this)"><div id="insideLine"></div></div> 
+
+                <div id="sizeSelection">Choose Size</div>
+                <input type="range" id="sizeRange" max="300" min="10" value="150" step="10">
+
+                
 
                 <div id="opacitySelction" >Choose Opacity</div>
                 <input type ="range" id="opacityRange" max ="1" min="0.1" value = "1" step="0.1">
@@ -61,7 +60,7 @@ and open the template in the editor.
             <input type="button" value="clear" id="clr" onclick="erase()">
             <input type="button" value="undo" id="undo" onclick="undo()">
             <input type="button" value="save" id="save" onclick="save()">
-            <img id="canvasimg" >
+            
             
             <div id="panel2">
                 <div id="backgroundSelection">Choose Image</div>
@@ -69,11 +68,12 @@ and open the template in the editor.
             </div>
             
 
-            <script src="newjavascript.js"></script>
+           
             <footer>Copyright © Michelle Solon & Sam Booth</footer>
+            <img id="canvasimg" >
         </div>
 
-
+ <script src="newjavascript.js"></script>
 
     </body>
 </html>

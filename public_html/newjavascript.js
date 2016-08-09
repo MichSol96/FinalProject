@@ -21,15 +21,12 @@ var cPushArray = [];
 var cStep = -1;
 
 //changes from shapes to lines
-var lCircleOut = false,
-        sCircleOut = false,
-        lCircleSolid = false,
-        sCircleSolid = false,
-        lSquareOut = false,
-        sSquareOut = false,
-        lSquareSolid = false,
-        sSquareSolid = false,
+var circleOut = false,
+        circleSolid = false,
+        squareOut = false,
+        squareSolid = false,
         line = true;
+var shapeSize = 150;
 
 var theBackground = new Image();
 
@@ -80,103 +77,40 @@ function color(obj) {
 //changes the shape
 function selectShape(obj) {
     switch (obj.id) {
-        case "circleSOutline":
-            lCircleOut = false;
-            sCircleOut = true;
-            lCircleSolid = false;
-            sCircleSolid = false;
-            lSquareOut = false;
-            sSquareOut = false;
-            lSquareSolid = false;
-            sSquareSolid = false;
+        case "circleOutline":
+            circleOut = true;
+            circleSolid = false;
+            squareOut = false;
+            squareSolid = false;
             line = false;
             break;
-        case "circleSSolid":
-            lCircleOut = false;
-            sCircleOut = false;
-            lCircleSolid = false;
-            sCircleSolid = true;
-            lSquareOut = false;
-            sSquareOut = false;
-            lSquareSolid = false;
-            sSquareSolid = false;
+        case "circleSolid":
+            circleOut = false;
+            circleSolid = true;
+            squareOut = false;
+            squareSolid = false;
             line = false;
             break;
-        case "squareSOutline":
-            lCircleOut = false;
-            sCircleOut = false;
-            lCircleSolid = false;
-            sCircleSolid = false;
-            lSquareOut = false;
-            sSquareOut = true;
-            lSquareSolid = false;
-            sSquareSolid = false;
+        case "squareOutline":
+            circleOut = false;
+            circleSolid = false;
+            squareOut = true;
+            squareSolid = false;
             line = false;
             break;
-        case "squareSSolid":
-            lCircleOut = false;
-            sCircleOut = false;
-            lCircleSolid = false;
-            sCircleSolid = false;
-            lSquareOut = false;
-            sSquareOut = false;
-            lSquareSolid = false;
-            sSquareSolid = true;
+        case "squareSolid":
+            circleOut = false;
+            circleSolid = false;
+            squareOut = false;
+            squareSolid = true;
             line = false;
             break;
-        case "squareLOutline":
-            lCircleOut = false;
-            sCircleOut = false;
-            lCircleSolid = false;
-            sCircleSolid = false;
-            lSquareOut = true;
-            sSquareOut = false;
-            lSquareSolid = false;
-            sSquareSolid = false;
-            line = false;
-            break;
-        case "circleLSolid":
-            lCircleOut = false;
-            sCircleOut = false;
-            lCircleSolid = true;
-            sCircleSolid = false;
-            lSquareOut = false;
-            sSquareOut = false;
-            lSquareSolid = false;
-            sSquareSolid = false;
-            line = false;
-            break;
-        case "circleLOutline":
-            lCircleOut = true;
-            sCircleOut = false;
-            lCircleSolid = false;
-            sCircleSolid = false;
-            lSquareOut = false;
-            sSquareOut = false;
-            lSquareSolid = false;
-            sSquareSolid = false;
-            line = false;
-            break;
-        case "squareLSolid":
-            lCircleOut = false;
-            sCircleOut = false;
-            lCircleSolid = false;
-            sCircleSolid = false;
-            lSquareOut = false;
-            sSquareOut = false;
-            lSquareSolid = true;
-            sSquareSolid = false;
-            line = false;
-            break;
+
         case "line":
-            lCircleOut = false;
-            sCircleOut = false;
-            lCircleSolid = false;
-            sCircleSolid = false;
-            lSquareOut = false;
-            sSquareOut = false;
-            lSquareSolid = false;
-            sSquareSolid = false;
+            circleOut = false;
+            circleSolid = false;
+            squareOut = false;
+            squareSolid = false;
             line = true;
             break;
 
@@ -191,18 +125,16 @@ function drawLine() {
     ctx.beginPath();
     ctx.lineJoin = "round";
 
+    y = document.getElementById("brushRange").value; //gets line thickness value
     if (eraser) {
         r = 255;
         g = 255;
         b = 255;
         q = 1;
-        y = 14;
     } else {
         q = document.getElementById("opacityRange").value; //gets opacity value
         r = document.getElementById("redRange").value; //gets red value
         g = document.getElementById("greenRange").value; // gets green value
-        b = document.getElementById("blueRange").value; // gets blue value
-        y = document.getElementById("brushRange").value; //gets line thickness value
     }
 
 
@@ -217,10 +149,12 @@ function drawLine() {
 
 }
 //draw small solid square
-function drawSmallSolidSquare() {
+function drawSolidSquare() {
 
     ctx.beginPath();
     ctx.moveTo(currX, currY);
+    
+    shapeSize = document.getElementById("sizeRange").value;
 
     if (eraser) {
         r = 255;
@@ -237,45 +171,20 @@ function drawSmallSolidSquare() {
     }
 
     ctx.globalAlpha = q;
-    ctx.fillRect(currX, currY, 40, 40);
+    ctx.fillRect(currX, currY, shapeSize, shapeSize);
     ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.fill();
     ctx.closePath();
 }
 
-//draws a large solid square
-function drawLargeSolidSquare() {
-
-    ctx.beginPath();
-    ctx.moveTo(currX, currY);
-
-    if (erase) {
-        r = 255;
-        g = 255;
-        b = 255;
-        q = 1;
-        y = 14;
-    } else {
-        q = document.getElementById("opacityRange").value; //gets opacity value
-        r = document.getElementById("redRange").value; //gets red value
-        g = document.getElementById("greenRange").value; // gets green value
-        b = document.getElementById("blueRange").value; // gets blue value
-        y = document.getElementById("brushRange").value; //gets line thickness value
-    }
-
-    ctx.globalAlpha = q;
-    ctx.fillRect(currX, currY, 100, 100);
-    ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
-    ctx.fill();
-    ctx.closePath();
-    return true;
-}
 
 //draw small outline square
-function drawSmallOutlineSquare() {
+function drawOutlineSquare() {
 
     ctx.beginPath();
     ctx.moveTo(currX, currY);
+    
+    shapeSize = document.getElementById("sizeRange").value;
 
     if (eraser) {
         r = 255;
@@ -292,7 +201,7 @@ function drawSmallOutlineSquare() {
     }
 
     ctx.globalAlpha = q;
-    ctx.strokeRect(currX, currY, 40, 40);
+    ctx.strokeRect(currX, currY, shapeSize, shapeSize);
     ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
     ctx.lineWidth = y;
     ctx.stroke();
@@ -300,41 +209,16 @@ function drawSmallOutlineSquare() {
 
 }
 
-//draw large outline square
-function drawLargeOutlineSquare() {
-
-    ctx.beginPath();
-    ctx.moveTo(currX, currY);
-
-    if (eraser) {
-        r = 255;
-        g = 255;
-        b = 255;
-        q = 1;
-        y = 14;
-    } else {
-        q = document.getElementById("opacityRange").value; //gets opacity value
-        r = document.getElementById("redRange").value; //gets red value
-        g = document.getElementById("greenRange").value; // gets green value
-        b = document.getElementById("blueRange").value; // gets blue value
-        y = document.getElementById("brushRange").value; //gets line thickness value
-    }
-
-    ctx.globalAlpha = q;
-    ctx.strokeRect(currX, currY, 100, 100);
-    ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
-    ctx.lineWidth = y;
-    ctx.stroke();
-    ctx.closePath();
-
-}
 
 //draw small solid circle
-function drawSmallSolidCircle() {
+function drawSolidCircle() {
 
     ctx.beginPath();
-    ctx.arc(currX, currY, 40, 0, 2 * Math.PI, false);
-
+    
+    shapeSize = document.getElementById("sizeRange").value;
+    
+    ctx.arc(currX, currY, shapeSize, 0, 2 * Math.PI, false);
+    
     if (eraser) {
         r = 255;
         g = 255;
@@ -356,38 +240,15 @@ function drawSmallSolidCircle() {
 
 }
 
-//draw large solid circle
-function drawLargeSolidCircle() {
-
-    ctx.beginPath();
-    ctx.arc(currX, currY, 100, 0, 2 * Math.PI, false);
-
-    if (erase) {
-        r = 255;
-        g = 255;
-        b = 255;
-        q = 1;
-        y = 14;
-    } else {
-        q = document.getElementById("opacityRange").value; //gets opacity value
-        r = document.getElementById("redRange").value; //gets red value
-        g = document.getElementById("greenRange").value; // gets green value
-        b = document.getElementById("blueRange").value; // gets blue value
-        y = document.getElementById("brushRange").value; //gets line thickness value
-    }
-
-    ctx.globalAlpha = q;
-    ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
-    ctx.fill();
-    ctx.closePath();
-
-}
 
 //draw small outline circle
-function drawSmallOutlineCircle() {
+function drawOutlineCircle() {
 
     ctx.beginPath();
-    ctx.arc(currX, currY, 40, 0, 2 * Math.PI, false);
+    
+    shapeSize = document.getElementById("sizeRange").value;
+    
+    ctx.arc(currX, currY, shapeSize, 0, 2 * Math.PI, false);
 
     if (eraser) {
         r = 255;
@@ -411,32 +272,7 @@ function drawSmallOutlineCircle() {
 
 }
 
-//draw large outline circle
-function drawLargeOutlineCircle() {
 
-    ctx.beginPath();
-    ctx.arc(currX, currY, 100, 0, 2 * Math.PI, false);
-
-    if (eraser) {
-        r = 255;
-        g = 255;
-        b = 255;
-        q = 1;
-        y = 14;
-    } else {
-        q = document.getElementById("opacityRange").value; //gets opacity value
-        r = document.getElementById("redRange").value; //gets red value
-        g = document.getElementById("greenRange").value; // gets green value
-        b = document.getElementById("blueRange").value; // gets blue value
-        y = document.getElementById("brushRange").value; //gets line thickness value
-    }
-
-    ctx.globalAlpha = q;
-    ctx.lineWidth = y;
-    ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
-    ctx.stroke();
-    ctx.closePath();
-}
 
 
 
@@ -458,7 +294,7 @@ function erase() {
         ctx.clearRect(0, 0, w, h);
         cPush();
         document.getElementById("theCanvas").style.background = 'white';
-        theBackground.src = cPushArray[0];
+        theBackground.src = "images/flowerOutline.jpg";
         theBackground.onload = function () {
             ctx.drawImage(theBackground, 0, 0, w, h);
         };
@@ -507,34 +343,18 @@ function findxy(res, e) {
             }
 
         } else {
-            if (sSquareSolid) {
-                drawSmallSolidSquare();
+            if (squareSolid) {
+                drawSolidSquare();
 
             } else {
-                if (lSquareSolid) {
-                    drawLargeSolidSquare();
+                if (circleSolid) {
+                    drawSolidCircle();
                 } else {
-                    if (sCircleSolid) {
-                        drawSmallSolidCircle();
+                    if (squareOut) {
+                        drawOutlineSquare();
                     } else {
-                        if (lCircleSolid) {
-                            drawLargeSolidCircle();
-                        } else {
-                            if (sSquareOut) {
-                                drawSmallOutlineSquare();
-                            } else {
-                                if (lSquareOut) {
-                                    drawLargeOutlineSquare();
-                                } else {
-                                    if (sCircleOut) {
-                                        drawSmallOutlineCircle();
-                                    } else {
-                                        if (lCircleOut) {
-                                            drawLargeOutlineCircle();
-                                        }
-                                    }
-                                }
-                            }
+                        if (circleOut) {
+                            drawOutlineCircle();
                         }
                     }
                 }
