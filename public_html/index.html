@@ -21,14 +21,14 @@ and open the template in the editor.
                 By default, line is selected, to change shapes, click on the shape you want. To pick the opacity or line thickness, 
                 you need to select it first and then pick the color you want to draw in. To clear the whole canvas, click the "clear"
                 button. To undo the last action, click the "undo" button.
-                
+
             </p>
             <canvas id="theCanvas" width="1100" height="700">
                 Your browser does not support the HTML5 canvas tag.
             </canvas>
-            
-              
-            
+
+
+
 
             <div id="panel">
                 <div id="colorSelection">Choose Color</div>
@@ -36,6 +36,10 @@ and open the template in the editor.
                 <div id="green">G: <input type="range" id="greenRange" max="255" min="0" value="0" step="1"></div>
                 <div id="blue">B: <input type="range" id="blueRange" max="255" min="0" value="0" step="1"></div>
 
+                <div id="gradientSelection">Gradient</div>
+                <div id="gradientOff" onclick="selectGradient(this)">OFF</div>
+                <div id="gradientOn" onclick="selectGradient(this)">ON</div>
+                
                 <div id="brushSelection">Choose Thickness</div>
                 <input type="range" id="brushRange" max="8" min="2" value="2" step="1">
 
@@ -47,23 +51,26 @@ and open the template in the editor.
                 <div id="line" onclick="selectShape(this)"><div id="insideLine"></div></div> 
 
                 <div id="sizeSelection">Choose Size</div>
-                <input type="range" id="sizeRange" max="300" min="10" value="150" step="10">
+                <input type="range" id="sizeRange" max="300" min="10" value="10" step="10">
 
                 <div id="opacitySelction" >Choose Opacity</div>
                 <input type ="range" id="opacityRange" max ="1" min="0.1" value = "1" step="0.1">
- 
+                
+                
+
+                
+
+                <input type="button" value="clear" id="clr" onclick="erase()">
+                <input type="button" value="undo" id="undo" onclick="undo()">
+                <input type="button" value="save" id="save" onclick="save()">
+
             </div>
-            
-            
 
-            <div id="eraser">Eraser</div>
-            <div class="colors" id="white" onclick="color(this)"></div>
 
-            <input type="button" value="clear" id="clr" onclick="erase()">
-            <input type="button" value="undo" id="undo" onclick="undo()">
-            <input type="button" value="save" id="save" onclick="save()">
-            
-          <div id="panel2">
+
+
+
+            <div id="panel2">
                 <div id="backgroundSelection">Choose Image</div>
                 <div id ="blankBackground" onclick="selectBackground(this)"></div>
                 <div id ="flowerOutline" onclick ="selectBackground(this)"></div>
@@ -72,14 +79,14 @@ and open the template in the editor.
                 <div id="elephantBackground" onclick="selectBackground(this)"></div>
                 <div id="fishBackground" onclick="selectBackground(this)"></div>
             </div>
-            
 
-           
+
+
             <footer>Copyright © Michelle Solon & Sam Booth</footer>
             <img id="canvasimg" >
         </div>
 
- <script src="newjavascript.js"></script>
+        <script src="newjavascript.js"></script>
 
     </body>
 </html>

@@ -50,7 +50,7 @@ p{
     box-sizing: border-box;
     position: relative;
     background-color: #542F24;
-    top: -750px;
+    top: -701.5px;
     left: 50px;
     height: 701.5px;
     width: 150px;
@@ -69,21 +69,21 @@ p{
 #brushSelection{
     color: white;
     position: relative;
-    top: -25px;
+    top: -85px;
     left: 2px;
 }
 
 #shapeSelection{
     color: white;
     position: relative;
-    top: -40px;
+    top: -85px;
     left: 2px;
 }
 
 #opacitySelction{
     color: white;
     position: relative;
-    top: -100px;
+    top: -185px;
     left: 2px;
 }
 
@@ -92,13 +92,6 @@ p{
     position: relative;
     top: -5px;
     left: 2px;
-}
-
-.colors{
-    position: relative;
-    width:15px;
-    height:15px;
-    border: solid black 1px;
 }
 
 #theCanvas{
@@ -117,36 +110,24 @@ p{
 }
 
 
-#white{
-    top:-600px;
-    left:5px;
-    background:white;
 
-}
 
 #clr{
     position:relative;
-    top:-190px;
+    top: 40px;
     left:5px;
-}
-
-#eraser{
-    color: white;
-    position: relative;
-    top: -600px;
-    left: 5px;
 }
 
 #undo{
     position: relative;
-    top: -150px;
-    left: -45px;
+    top: 70px;
+    left: -50px;
 }
 
 #save{
     position: relative;
-    top:-110px;
-    left:-95px;
+    top: 70px;
+    left: 5px;
 }
 
 #canvasimg{
@@ -165,7 +146,7 @@ p{
     border: 1px solid;
     height: 15px;
     width: 15px;
-    top: -75px;
+    top: -120px;
     left: 5px;
 }
 
@@ -186,7 +167,7 @@ p{
     border: 1px solid;
     height: 15px;
     width: 15px;
-    top: -58px;
+    top: -103px;
     left: 25px;
 }
 
@@ -205,7 +186,7 @@ p{
     border: 1px solid;
     height: 15px;
     width: 15px;
-    top: -92px;
+    top: -137px;
     left: 44.5px;
 }
 
@@ -225,7 +206,7 @@ p{
     border: 1px solid;
     height: 15px;
     width: 15px;
-    top: -41px;
+    top: -86px;
     left: 64px;
 }
 
@@ -246,7 +227,7 @@ p{
     border: 1px solid;
     height: 15px;
     width: 15px;
-    top: -90px;
+    top: -133px;
     left: 5px;
 }
 
@@ -271,7 +252,7 @@ footer{
     text-align: center;
     color: white;
 
-    top: -70px;
+    top: 20px;
     padding-left: 200px;
 }
 
@@ -281,7 +262,7 @@ footer{
 
 #opacityRange{
     position:relative;
-    top:-110px;
+    top:-190px;
     left: -5px;
 }
 
@@ -333,7 +314,7 @@ footer{
 #brushRange{
     position: relative;
     left: -5px;
-    top: -30px;
+    top: -90px;
 }
 
 #theBackground{
@@ -348,14 +329,14 @@ footer{
 
 #sizeRange{
     position: relative;
-    top: -90px;
+    top: -65px;
     left: -5px;
 }
 
 #sizeSelection{
     color: white;
     position: relative;
-    top: -80px;
+    top: -60px;
     left: 2px;
 }
 
@@ -372,7 +353,7 @@ footer{
 }
 
 #blankBackground{
-     position: relative;
+    position: relative;
     height: 100px;
     width: 100px;
     background-color: white;
@@ -382,7 +363,7 @@ footer{
     float: right;
 }
 #butterflyBackground{
-     position: relative;
+    position: relative;
     height: 100px;
     width: 100px;
     background-image: url("images/butterflyBackground.jpg");
@@ -394,7 +375,7 @@ footer{
 }
 
 #lionBackground{
-     position: relative;
+    position: relative;
     height: 100px;
     width: 100px;
     background-image: url("images/lionBackground.jpg");
@@ -406,7 +387,7 @@ footer{
 }
 
 #elephantBackground{
-     position: relative;
+    position: relative;
     height: 100px;
     width: 100px;
     background-image: url("images/elephantBackground.jpg");
@@ -417,7 +398,7 @@ footer{
     float: right;
 }
 #fishBackground{
-     position: relative;
+    position: relative;
     height: 100px;
     width: 100px;
     background-image: url("images/fishBackground.jpg");
@@ -426,4 +407,29 @@ footer{
     border: 1px solid;
     right: 30px;
     float: right;
+}
+
+#gradientSelection{
+    color: white;
+    position: relative;
+    top: -85px;
+    left: 2px;
+}
+
+#gradientOn{
+    background: linear-gradient(to right, red , yellow);
+    position: relative;
+    top: -110px;
+    left: 5px;
+    height: 25px;
+    width: 25px;
+}
+
+#gradientOff{
+    background: red;
+    position: relative;
+    top: -85px;
+    left: 35px;
+    height: 25px;
+    width: 25px;
 }
