@@ -148,7 +148,7 @@ function drawLine() {
     ctx.stroke();
 
 }
-//draw small solid square
+//draw small solid square jlenflan
 function drawSolidSquare() {
 
     ctx.beginPath();
