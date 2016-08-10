@@ -66,11 +66,13 @@ function init() {
     }, false);
 }
 
-//reds the object
-function color(obj) {
-    switch (obj.id) {
-        case "white":
-            eraser = true;
+function selectGradient(obj){
+    switch(obj.id){
+        case "gradientOff":
+            gradOn = false;
+            break;
+        case "gradientOn":
+            gradOn = true;
             break;
     }
 }
