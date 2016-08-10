@@ -66,7 +66,7 @@ function init() {
     }, false);
 }
 
-//colors the object
+//reds the object
 function color(obj) {
     switch (obj.id) {
         case "white":
@@ -74,6 +74,42 @@ function color(obj) {
             break;
     }
 }
+
+//draws lines
+function drawLine() {
+
+    ctx.beginPath();
+    ctx.lineJoin = "round";
+
+    y = document.getElementById("brushRange").value; //gets line thickness value
+    if (eraser) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
+    }
+
+
+    ctx.globalAlpha = q; //sets opacity value
+    ctx.moveTo(prevX, prevY);
+    ctx.lineTo(currX, currY);
+    ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
+    //ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
+    ctx.lineWidth = y;
+
+    ctx.closePath();
+    ctx.stroke();
+
+}
+
+
+
 
 //changes the shape
 function selectShape(obj) {
@@ -120,35 +156,7 @@ function selectShape(obj) {
 
 
 
-//draws lines
-function drawLine() {
 
-    ctx.beginPath();
-    ctx.lineJoin = "round";
-
-    y = document.getElementById("brushRange").value; //gets line thickness value
-    if (eraser) {
-        r = 255;
-        g = 255;
-        b = 255;
-        q = 1;
-    } else {
-        q = document.getElementById("opacityRange").value; //gets opacity value
-        r = document.getElementById("redRange").value; //gets red value
-        g = document.getElementById("greenRange").value; // gets green value
-    }
-
-
-    ctx.globalAlpha = q; //sets opacity value
-    ctx.moveTo(prevX, prevY);
-    ctx.lineTo(currX, currY);
-    ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
-    ctx.lineWidth = y;
-
-    ctx.closePath();
-    ctx.stroke();
-
-}
 //draw small solid square
 function drawSolidSquare() {
 
