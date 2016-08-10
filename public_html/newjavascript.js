@@ -14,7 +14,7 @@ var canvas, ctx, flag = false,
 
 var q, r, b, g, y, x;
 
-var gradOn;
+var white, eraser;
 
 //tracks changes to the canvas for the undo function
 var cPushArray = [];
@@ -26,7 +26,7 @@ var circleOut = false,
         squareOut = false,
         squareSolid = false,
         line = true;
-var shapeSize = 10;
+var shapeSize = 150;
 
 
 var theBackground = new Image();
@@ -38,14 +38,15 @@ function init() {
     w = canvas.width;
     h = canvas.height;
 
-    gradOn = false;
-    
+    eraser = false;
+    white = document.getElementById("white");
+
     ctx.save();
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, w, h);
     ctx.restore();
 
-    // theBackground.src = "images/flowerOutline.jpg";
+   // theBackground.src = "images/flowerOutline.jpg";
     theBackground.onload = function () {
         ctx.drawImage(theBackground, 0, 0, w, h);
     };
@@ -64,6 +65,50 @@ function init() {
         findxy('out', e);
     }, false);
 }
+
+//reds the object
+function color(obj) {
+    switch (obj.id) {
+        case "white":
+            eraser = true;
+            break;
+    }
+}
+
+//draws lines
+function drawLine() {
+
+    ctx.beginPath();
+    ctx.lineJoin = "round";
+
+    y = document.getElementById("brushRange").value; //gets line thickness value
+    if (eraser) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
+    }
+
+
+    ctx.globalAlpha = q; //sets opacity value
+    ctx.moveTo(prevX, prevY);
+    ctx.lineTo(currX, currY);
+    ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
+    //ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
+    ctx.lineWidth = y;
+
+    ctx.closePath();
+    ctx.stroke();
+
+}
+
+
 
 
 //changes the shape
@@ -111,41 +156,28 @@ function selectShape(obj) {
 
 
 
-//draws lines
-function drawLine() {
 
-    ctx.beginPath();
-    ctx.lineJoin = "round";
-
-    y = document.getElementById("brushRange").value; //gets line thickness value
-    q = document.getElementById("opacityRange").value; //gets opacity value
-    r = document.getElementById("redRange").value; //gets red value
-    g = document.getElementById("greenRange").value; // gets green value
-
-
-
-    ctx.globalAlpha = q; //sets opacity value
-    ctx.moveTo(prevX, prevY);
-    ctx.lineTo(currX, currY);
-    ctx.strokeStyle = "rgb(" + r + ", " + g + ", " + b + ")";
-    ctx.lineWidth = y;
-
-    ctx.closePath();
-    ctx.stroke();
-
-}
 //draw small solid square
 function drawSolidSquare() {
 
     ctx.beginPath();
     ctx.moveTo(currX, currY);
-
+    
     shapeSize = document.getElementById("sizeRange").value;
 
-    y = document.getElementById("brushRange").value; //gets line thickness value
-    q = document.getElementById("opacityRange").value; //gets opacity value
-    r = document.getElementById("redRange").value; //gets red value
-    g = document.getElementById("greenRange").value; // gets green value
+    if (eraser) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+        y = 14;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
+    }
 
     ctx.globalAlpha = q;
     ctx.fillRect(currX, currY, shapeSize, shapeSize);
@@ -160,13 +192,22 @@ function drawOutlineSquare() {
 
     ctx.beginPath();
     ctx.moveTo(currX, currY);
-
+    
     shapeSize = document.getElementById("sizeRange").value;
 
-    y = document.getElementById("brushRange").value; //gets line thickness value
-    q = document.getElementById("opacityRange").value; //gets opacity value
-    r = document.getElementById("redRange").value; //gets red value
-    g = document.getElementById("greenRange").value; // gets green value
+    if (eraser) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+        y = 14;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
+    }
 
     ctx.globalAlpha = q;
     ctx.strokeRect(currX, currY, shapeSize, shapeSize);
@@ -182,15 +223,24 @@ function drawOutlineSquare() {
 function drawSolidCircle() {
 
     ctx.beginPath();
-
+    
     shapeSize = document.getElementById("sizeRange").value;
-
+    
     ctx.arc(currX, currY, shapeSize, 0, 2 * Math.PI, false);
-
-    y = document.getElementById("brushRange").value; //gets line thickness value
-    q = document.getElementById("opacityRange").value; //gets opacity value
-    r = document.getElementById("redRange").value; //gets red value
-    g = document.getElementById("greenRange").value; // gets green value
+    
+    if (eraser) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+        y = 14;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
+    }
 
     ctx.globalAlpha = q;
     ctx.fillStyle = "rgb(" + r + ", " + g + ", " + b + ")";
@@ -204,15 +254,24 @@ function drawSolidCircle() {
 function drawOutlineCircle() {
 
     ctx.beginPath();
-
-    shapeSize = document.getElementById("sizeRange").value;
-
-    ctx.arc(currX, currY, shapeSize, 0, 2 * Math.PI, false);
     
-    y = document.getElementById("brushRange").value; //gets line thickness value
-    q = document.getElementById("opacityRange").value; //gets opacity value
-    r = document.getElementById("redRange").value; //gets red value
-    g = document.getElementById("greenRange").value; // gets green value
+    shapeSize = document.getElementById("sizeRange").value;
+    
+    ctx.arc(currX, currY, shapeSize, 0, 2 * Math.PI, false);
+
+    if (eraser) {
+        r = 255;
+        g = 255;
+        b = 255;
+        q = 1;
+        y = 14;
+    } else {
+        q = document.getElementById("opacityRange").value; //gets opacity value
+        r = document.getElementById("redRange").value; //gets red value
+        g = document.getElementById("greenRange").value; // gets green value
+        b = document.getElementById("blueRange").value; // gets blue value
+        y = document.getElementById("brushRange").value; //gets line thickness value
+    }
 
     ctx.globalAlpha = q;
     ctx.lineWidth = y;
@@ -222,16 +281,7 @@ function drawOutlineCircle() {
 
 }
 
-function selectGradient(obj){
-    switch(obj.id){
-        case "gradientOff":
-            gradOn = false;
-            break;
-        case "gradientOn":
-            gradOn = true;
-            break;
-    }
-}
+
 
 
 
@@ -283,26 +333,26 @@ function save() {
 }
 
 
-function selectBackground(obj) {
-    switch (obj.id) {
+function selectBackground(obj){
+    switch(obj.id){
         case "flowerOutline":
             theBackground.src = "images/flowerOutline.jpg";
-            break;
+        break;
         case "blankBackground":
             theBackground.src = "images/blankBackground.jpg";
-            break;
-        case "butterflyBackground":
-            theBackground.src = "images/butterflyBackground.jpg";
-            break;
-        case "lionBackground":
-            theBackground.src = "images/lionBackground.jpg";
-            break;
-        case "elephantBackground":
-            theBackground.src = "images/elephantBackground.jpg";
-            break;
-        case "fishBackground":
-            theBackground.src = "images/fishBackground.jpg";
-            break;
+        break;
+    case "butterflyBackground":
+        theBackground.src = "images/butterflyBackground.jpg";
+        break;
+    case "lionBackground":
+        theBackground.src = "images/lionBackground.jpg";
+        break;
+    case "elephantBackground":
+        theBackground.src = "images/elephantBackground.jpg";
+        break;
+    case "fishBackground":
+        theBackground.src = "images/fishBackground.jpg";
+        break;
     }
 }
 
