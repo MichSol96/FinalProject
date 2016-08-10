@@ -28,6 +28,7 @@ var circleOut = false,
         line = true;
 var shapeSize = 150;
 
+
 var theBackground = new Image();
 
 //adds event listeners so that you can draw on the canvas
@@ -45,7 +46,7 @@ function init() {
     ctx.fillRect(0, 0, w, h);
     ctx.restore();
 
-    theBackground.src = "images/flowerOutline.jpg";
+   // theBackground.src = "images/flowerOutline.jpg";
     theBackground.onload = function () {
         ctx.drawImage(theBackground, 0, 0, w, h);
     };
@@ -148,7 +149,7 @@ function drawLine() {
     ctx.stroke();
 
 }
-//draw small solid square jlenflan
+//draw small solid square
 function drawSolidSquare() {
 
     ctx.beginPath();
@@ -294,7 +295,7 @@ function erase() {
         ctx.clearRect(0, 0, w, h);
         cPush();
         document.getElementById("theCanvas").style.background = 'white';
-        theBackground.src = "images/flowerOutline.jpg";
+        //theBackground.src = "images/flowerOutline.jpg";
         theBackground.onload = function () {
             ctx.drawImage(theBackground, 0, 0, w, h);
         };
@@ -321,6 +322,30 @@ function save() {
     var dataURL = canvas.toDataURL();
     document.getElementById("canvasimg").src = dataURL;
     document.getElementById("canvasimg").style.display = "inline";
+}
+
+
+function selectBackground(obj){
+    switch(obj.id){
+        case "flowerOutline":
+            theBackground.src = "images/flowerOutline.jpg";
+        break;
+        case "blankBackground":
+            theBackground.src = "images/blankBackground.jpg";
+        break;
+    case "butterflyBackground":
+        theBackground.src = "images/butterflyBackground.jpg";
+        break;
+    case "lionBackground":
+        theBackground.src = "images/lionBackground.jpg";
+        break;
+    case "elephantBackground":
+        theBackground.src = "images/elephantBackground.jpg";
+        break;
+    case "fishBackground":
+        theBackground.src = "images/fishBackground.jpg";
+        break;
+    }
 }
 
 //this is how it finds the current (x, y) coordinate of the mouse so it will draw the line/shape in that place
