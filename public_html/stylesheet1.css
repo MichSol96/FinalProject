@@ -1,4 +1,5 @@
 /*
+/*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
@@ -9,10 +10,6 @@ and open the template in the editor.
 */
 
 @import 'https://fonts.googleapis.com/css?family=Gloria+Hallelujah';
-
-html{
-    height: 100%;
-}
 body{
     background-image: url("images/background.jpg");
     margin: 0px;
@@ -42,7 +39,7 @@ p{
     box-sizing: border-box;
     position: relative;
     background-color: #542F24;
-    top: -710px;
+    top: 0px;
     left: 0px;
     height: 701.5px;
     width: 150px;
@@ -53,7 +50,7 @@ p{
     box-sizing: border-box;
     position: relative;
     background-color: #542F24;
-    top: -1460px;
+    top: -750px;
     left: 50px;
     height: 701.5px;
     width: 150px;
@@ -105,7 +102,7 @@ p{
 }
 
 #theCanvas{
-    position: relative;
+    position: absolute;
     left: 100px;
     border: solid 1px black;
     box-sizing: border-box;
@@ -114,7 +111,7 @@ p{
 #content{
     position: relative;
     margin-left: 0px;
-    height: -200px;
+    height: auto;
     width: 1300px;
     font-family: 'Gloria Hallelujah', cursive;
 }
@@ -331,10 +328,7 @@ footer{
     position: relative;
     top: -20px;
     left: 10px;
-
-
 }
-
 
 #brushRange{
     position: relative;
@@ -363,4 +357,73 @@ footer{
     position: relative;
     top: -80px;
     left: 2px;
+}
+
+
+#flowerOutline{
+    position: relative;
+    height: 100px;
+    width: 100px;
+    background-image: url("images/flowerOutline.jpg");
+    background-size: 100px 100px;
+    border: 1px solid;
+    right: 30px;
+    float: right;
+}
+
+#blankBackground{
+     position: relative;
+    height: 100px;
+    width: 100px;
+    background-color: white;
+    background-size: 100px 100px;
+    border: 1px solid;
+    right: 30px;
+    float: right;
+}
+#butterflyBackground{
+     position: relative;
+    height: 100px;
+    width: 100px;
+    background-image: url("images/butterflyBackground.jpg");
+    background-size:100px 100px;
+    background-size: 100px 100px;
+    border: 1px solid;
+    right: 30px;
+    float: right;
+}
+
+#lionBackground{
+     position: relative;
+    height: 100px;
+    width: 100px;
+    background-image: url("images/lionBackground.jpg");
+    background-size:100px 100px;
+    background-size: 100px 100px;
+    border: 1px solid;
+    right: 30px;
+    float: right;
+}
+
+#elephantBackground{
+     position: relative;
+    height: 100px;
+    width: 100px;
+    background-image: url("images/elephantBackground.jpg");
+    background-size:100px 100px;
+    background-size: 100px 100px;
+    border: 1px solid;
+    right: 30px;
+    float: right;
+}
+#fishBackground{
+     position: relative;
+    height: 100px;
+    width: 100px;
+    background-image: url("images/fishBackground.jpg");
+    background-size:100px 100px;
+    background-size: 100px 100px;
+    border: 1px solid;
+    right: 30px;
+    float: right;
 }
