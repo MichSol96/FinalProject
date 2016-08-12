@@ -13,7 +13,7 @@ and open the template in the editor.
 @import 'https://fonts.googleapis.com/css?family=Josefin+Slab';
 html {
     height: 100%;
-    overflow: hidden;
+
     background-color: #c6c8ee;
 }
 body{
@@ -22,7 +22,8 @@ body{
     border: 0px;
     padding: 0px;
     font-size: 18px;
-    overflow: auto;
+
+
 }
 
 h1{
@@ -108,7 +109,7 @@ p{
 }
 
 #theCanvas{
-    position: fixed;
+    position: absolute;
     left: 150px;
     border: solid 1px black;
     box-sizing: border-box;
