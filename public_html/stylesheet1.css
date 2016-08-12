@@ -109,8 +109,9 @@ p{
 }
 
 #theCanvas{
-    position: absolute;
+    position: fixed;
     left: 150px;
+    top: 175px;
     border: solid 1px black;
     box-sizing: border-box;
 }
