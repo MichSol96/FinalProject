@@ -9,36 +9,49 @@ and open the template in the editor.
     Author     : Michelle
 */
 
-@import 'https://fonts.googleapis.com/css?family=Gloria+Hallelujah';
+@import 'https://fonts.googleapis.com/css?family=Sacramento';
+@import 'https://fonts.googleapis.com/css?family=Josefin+Slab';
+html {
+    height: 100%;
+    overflow: hidden;
+    background-color: #c6c8ee;
+}
 body{
-    background-image: url("images/background.jpg");
+    background-color: #c6c8ee;
     margin: 0px;
     border: 0px;
     padding: 0px;
+    font-size: 18px;
+    overflow: auto;
 }
 
 h1{
-    color: white;
-    font-size: 40px;
+
+    font-size: 70px;
     text-align: center;
     margin: 0px;
     padding: 0px;
     border: 0px;
+    font-family: 'Sacramento', cursive;
+    color: white;
+
 
 }
 
 p{
     color: white;
-    font-size: 18px;
+    font-size: 23px;
     margin: 0px;
     padding: 0px;
     border: 0px;
+
+
 }
 
 #panel{
     box-sizing: border-box;
     position: relative;
-    background-color: #542F24;
+    background-color: #bd6b73;
     top: 0px;
     left: 0px;
     height: 701.5px;
@@ -49,9 +62,9 @@ p{
 #panel2{
     box-sizing: border-box;
     position: relative;
-    background-color: #542F24;
+    background-color: #bd6b73;
     top: -701.5px;
-    left: 50px;
+    left: 0px;
     height: 701.5px;
     width: 150px;
     border: solid 1px black;
@@ -62,41 +75,41 @@ p{
 #colorSelection{
     color: white;
     position: relative;
-    top: -5px;
+    top: 5px;
     left: 2px;
 }
 
 #brushSelection{
     color: white;
     position: relative;
-    top: -85px;
+    top: -37px;
     left: 2px;
 }
 
 #shapeSelection{
     color: white;
     position: relative;
-    top: -85px;
+    top: -33px;
     left: 2px;
 }
 
 #opacitySelction{
     color: white;
     position: relative;
-    top: -185px;
+    top: -205px;
     left: 2px;
 }
 
 #backgroundSelection{
     color: white;
     position: relative;
-    top: -5px;
+    top: 0px;
     left: 2px;
 }
 
 #theCanvas{
-    position: absolute;
-    left: 100px;
+    position: fixed;
+    left: 150px;
     border: solid 1px black;
     box-sizing: border-box;
 }
@@ -104,9 +117,9 @@ p{
 #content{
     position: relative;
     margin-left: 0px;
-    height: auto;
-    width: 1300px;
-    font-family: 'Gloria Hallelujah', cursive;
+    height: 100%;
+    width: 1400px;
+    font-family: 'Josefin Slab', serif;
 }
 
 
@@ -114,26 +127,26 @@ p{
 
 #clr{
     position:relative;
-    top: 40px;
+    top: -40px;
     left:5px;
 }
 
 #undo{
     position: relative;
-    top: 70px;
-    left: -50px;
+    top: -10px;
+    left: -40px;
 }
 
 #save{
     position: relative;
-    top: 70px;
+    top: 0px;
     left: 5px;
 }
 
 #canvasimg{
     position:relative;
     box-sizing: border-box;
-    top:-812px;
+    top:-735px;
     left:1350px;
     display:none;
 }
@@ -144,9 +157,9 @@ p{
     position: relative;
     background-color: lightgray;
     border: 1px solid;
-    height: 15px;
-    width: 15px;
-    top: -120px;
+    height: 25px;
+    width: 25px;
+    top: -81px;
     left: 5px;
 }
 
@@ -156,8 +169,8 @@ p{
     position: relative;
     border: 1px solid red;
     border-radius: 50%;
-    height: 5px;
-    width: 5px;
+    height: 15px;
+    width: 15px;
     background-color: red;
 }
 
@@ -165,10 +178,10 @@ p{
     position: relative;
     background-color: lightgray;
     border: 1px solid;
-    height: 15px;
-    width: 15px;
-    top: -103px;
-    left: 25px;
+    height: 25px;
+    width: 25px;
+    top: -54px;
+    left: 38px;
 }
 
 #insideSquareOutline{
@@ -176,18 +189,18 @@ p{
     left: 4px;
     position: relative;
     border: 1px solid red;
-    height: 5px;
-    width: 5px;
+    height: 15px;
+    width: 15px;
 }
 
 #squareSolid{
     position: relative;
     background-color: lightgray;
     border: 1px solid;
-    height: 15px;
-    width: 15px;
-    top: -137px;
-    left: 44.5px;
+    height: 25px;
+    width: 25px;
+    top: -108px;
+    left: 71.5px;
 }
 
 #insideSquareSolid{
@@ -195,8 +208,8 @@ p{
     left: 4px;
     position: relative;
     border: 1px solid red;
-    height: 5px;
-    width: 5px;
+    height: 15px;
+    width: 15px;
     background-color: red;
 }
 
@@ -204,10 +217,10 @@ p{
     position: relative;
     background-color: lightgray;
     border: 1px solid;
-    height: 15px;
-    width: 15px;
-    top: -86px;
-    left: 64px;
+    height: 25px;
+    width: 25px;
+    top: -27px;
+    left: 104px;
 }
 
 #insideCircleOutline{
@@ -216,8 +229,8 @@ p{
     position: relative;
     border: 1px solid red;
     border-radius: 50%;
-    height: 5px;
-    width: 5px;
+    height: 15px;
+    width: 15px;
 }
 
 
@@ -225,50 +238,142 @@ p{
     position: relative;
     background-color: lightgray;
     border: 1px solid;
-    height: 15px;
-    width: 15px;
-    top: -133px;
+    height: 25px;
+    width: 25px;
+    top: -103px;
     left: 5px;
 }
 
 #insideLine{
-    top: 6px;
+    top: 10px;
     left: 1.5px;
     position: relative;
     border: 1px solid red;
     height: 1px;
-    width: 10px;
+    width: 20px;
     background-color: red;
+}
+
+#diamondSolid{
+    position: relative;
+    background-color: lightgray;
+    border: 1px solid;
+    height: 25px;
+    width: 25px;
+    top: -185px;
+    left: 38px;
+}
+
+#insideDiamondSolid{
+    position: relative;
+    background-color: red;
+    height: 17px;
+    width: 17px;
+    top: 4px;
+    left: 4px;
+    transform: rotate(45deg);
+}
+
+#triangleSolid{
+    position: relative;
+    background-color: lightgray;
+    border: 1px solid;
+    height: 25px;
+    width: 25px;
+    top: -130px;
+    left: 104px;
+}
+
+#insideTriangleSolid{
+    position: relative;
+    width: 0; 
+    height: 0; 
+    border-left: 11px solid transparent; 
+    border-right: 11px solid transparent;
+    border-bottom: 18px solid red;
+    top: 2px;
+    left: 2px;
+}
+
+#diamondOutline{
+    position: relative;
+    background-color: lightgray;
+    border: 1px solid;
+    height: 25px;
+    width: 25px;
+    top: -180px;
+    left: 5px;
+}
+
+#insideDiamondOutline{
+    position: relative;
+    border: solid 1px red;
+    height: 17px;
+    width: 17px;
+    top: 4px;
+    left: 4px;
+    transform: rotate(45deg);
+    box-sizing: border-box;
+}
+
+#triangleOutline{
+    position: relative;
+    background-color: lightgray;
+    border: 1px solid;
+    height: 25px;
+    width: 25px;
+    top: -157px;
+    left: 71px;
+}
+
+#insideTriangleOutline{
+    position: relative;
+    width: 0; 
+    height: 0; 
+    border-left: 8px solid transparent; 
+    border-right: 8px solid transparent;
+    border-bottom: 14px solid lightgray;
+    top: 2px;
+    left: -8.5px;
+    box-sizing: border-box;
+}
+
+#triangleBorder{
+    position: relative;
+    width: 0; 
+    height: 0; 
+    border-left: 11px solid transparent; 
+    border-right: 11px solid transparent;
+    border-bottom: 18px solid red;
+    top: 2px;
+    left: 2px;
 }
 
 
 footer{
     margin-top: 0px;
-    background-color: #542F24;
+    background-color: #bd6b73;
     position: relative;
     height:auto;
     width: 1150px;
-    font-family: 'Gloria Hallelujah', cursive;
+    font-family: 'Sacramento', cursive;
     text-align: center;
     color: white;
-
+    font-size: 23px;
     top: 20px;
-    padding-left: 200px;
+    padding-left: 250px;
 }
 
-.white{
-    background-color: white;
-}
 
 #opacityRange{
     position:relative;
-    top:-190px;
+    top:-205px;
     left: -5px;
 }
 
 #red{
     position: relative;
-    top:-10px;
+    top: 10px;
     color: white;
     font-size: 75%;
     width:95px;
@@ -284,7 +389,7 @@ footer{
 
 #green{
     position: relative;
-    top: -40px;
+    top: -10px;
     color: white;
     font-size: 75%;
     left: 5px;
@@ -299,7 +404,7 @@ footer{
 
 #blue{
     position: relative;
-    top: -70px;
+    top: -30px;
     color: white;
     font-size: 75%;
     left: 5px;
@@ -307,14 +412,14 @@ footer{
 
 #blueRange{
     position: relative;
-    top: -20px;
-    left: 10px;
+    top: 5px;
+    left: -5px;
 }
 
 #brushRange{
     position: relative;
     left: -5px;
-    top: -90px;
+    top: -39px;
 }
 
 #theBackground{
@@ -329,14 +434,14 @@ footer{
 
 #sizeRange{
     position: relative;
-    top: -65px;
+    top: -100px;
     left: -5px;
 }
 
 #sizeSelection{
     color: white;
     position: relative;
-    top: -60px;
+    top: -100px;
     left: 2px;
 }
 
@@ -412,24 +517,26 @@ footer{
 #gradientSelection{
     color: white;
     position: relative;
-    top: -85px;
+    top: -30px;
     left: 2px;
 }
 
 #gradientOn{
     background: linear-gradient(to right, red , yellow);
     position: relative;
-    top: -110px;
+    top: -55px;
     left: 5px;
-    height: 25px;
-    width: 25px;
+    height: 26px;
+    width: 26px;
+    font-size: 75%;
 }
 
 #gradientOff{
     background: red;
     position: relative;
-    top: -85px;
-    left: 35px;
-    height: 25px;
-    width: 25px;
+    top: -28px;
+    left: 40px;
+    height: 26px;
+    width: 26px;
+    font-size: 75%;
 }

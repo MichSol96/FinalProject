@@ -25,6 +25,10 @@ var circleOut = false,
         circleSolid = false,
         squareOut = false,
         squareSolid = false,
+        diamondSolid = false,
+        triangleSolid = false,
+        diamondOut = false,
+        triangleOut = false,
         line = true;
 var shapeSize = 10;
 
@@ -91,7 +95,7 @@ function drawLine() {
     y = document.getElementById("brushRange").value; //gets line thickness value
 
     ctx.globalAlpha = q; //sets opacity value
-    
+
     shade = "rgb(" + r + ", " + g + ", " + b + ")";
 
     if (gradOn) {
@@ -102,7 +106,7 @@ function drawLine() {
     } else {
         ctx.strokeStyle = shade;
     }
-    
+
     ctx.moveTo(prevX, prevY);
     ctx.lineTo(currX, currY);
     //ctx.strokeStyle = shade;
@@ -125,6 +129,10 @@ function selectShape(obj) {
             circleSolid = false;
             squareOut = false;
             squareSolid = false;
+            diamondSolid = false;
+            triangleSolid = false;
+            diamondOut = false;
+            triangleOut = false;
             line = false;
             break;
         case "circleSolid":
@@ -132,6 +140,10 @@ function selectShape(obj) {
             circleSolid = true;
             squareOut = false;
             squareSolid = false;
+            diamondSolid = false;
+            triangleSolid = false;
+            diamondOut = false;
+            triangleOut = false;
             line = false;
             break;
         case "squareOutline":
@@ -139,6 +151,10 @@ function selectShape(obj) {
             circleSolid = false;
             squareOut = true;
             squareSolid = false;
+            diamondSolid = false;
+            triangleSolid = false;
+            diamondOut = false;
+            triangleOut = false;
             line = false;
             break;
         case "squareSolid":
@@ -146,6 +162,10 @@ function selectShape(obj) {
             circleSolid = false;
             squareOut = false;
             squareSolid = true;
+            diamondSolid = false;
+            triangleSolid = false;
+            diamondOut = false;
+            triangleOut = false;
             line = false;
             break;
 
@@ -154,10 +174,60 @@ function selectShape(obj) {
             circleSolid = false;
             squareOut = false;
             squareSolid = false;
+            diamondSolid = false;
+            triangleSolid = false;
+            diamondOut = false;
+            triangleOut = false;
             line = true;
             break;
 
+        case "triangleSolid":
+            circleOut = false;
+            circleSolid = false;
+            squareOut = false;
+            squareSolid = false;
+            diamondSolid = false;
+            triangleSolid = true;
+            diamondOut = false;
+            triangleOut = false;
+            line = false;
+            break;
+        case "triangleOutline":
+            circleOut = false;
+            circleSolid = false;
+            squareOut = false;
+            squareSolid = false;
+            diamondSolid = false;
+            triangleSolid = false;
+            diamondOut = false;
+            triangleOut = true;
+            line = false;
+            break;
+        case "diamondSolid":
+            circleOut = false;
+            circleSolid = false;
+            squareOut = false;
+            squareSolid = false;
+            diamondSolid = true;
+            triangleSolid = false;
+            diamondOut = false;
+            triangleOut = false;
+            line = false;
+            break;
+        case "diamondOutline":
+            circleOut = false;
+            circleSolid = false;
+            squareOut = false;
+            squareSolid = false;
+            diamondSolid = false;
+            triangleSolid = false;
+            diamondOut = true;
+            triangleOut = false;
+            line = false;
+            break;
+
     }
+
 }
 
 
@@ -217,9 +287,9 @@ function drawOutlineSquare() {
     y = document.getElementById("brushRange").value; //gets line thickness value
 
     ctx.globalAlpha = q;
-    
+
     shade = "rgb(" + r + ", " + g + ", " + b + ")";
-    
+
     if (gradOn) {
         var grad = ctx.createLinearGradient(0, 0, currX + (shapeSize - (shapeSize / 20)), 0);
         grad.addColorStop(0, shade);
@@ -290,7 +360,7 @@ function drawOutlineCircle() {
 
     ctx.globalAlpha = q;
     ctx.lineWidth = y;
-    
+
     shade = "rgb(" + r + ", " + g + ", " + b + ")";
 
     if (gradOn) {
@@ -301,11 +371,156 @@ function drawOutlineCircle() {
     } else {
         ctx.strokeStyle = shade;
     }
-    
+
 
     ctx.stroke();
     ctx.closePath();
 
+}
+
+function drawOutlineDiamond() {
+
+    ctx.beginPath();
+    //ctx.moveTo(currX, currY);
+
+    shapeSize = document.getElementById("sizeRange").value;
+
+    q = document.getElementById("opacityRange").value; //gets opacity value
+    r = document.getElementById("redRange").value; //gets red value
+    g = document.getElementById("greenRange").value; // gets green value
+    b = document.getElementById("blueRange").value; // gets blue value
+    y = document.getElementById("brushRange").value; //gets line thickness value
+
+    ctx.globalAlpha = q;
+
+    shade = "rgb(" + r + ", " + g + ", " + b + ")";
+
+    if (gradOn) {
+        var grad = ctx.createLinearGradient(0, 0, currX + (shapeSize - (shapeSize / 20)), 0);
+        grad.addColorStop(0, shade);
+        grad.addColorStop(1, "white");
+        ctx.strokeStyle = grad;
+    } else {
+        ctx.strokeStyle = shade;
+    }
+
+    ctx.save();
+
+    ctx.translate(currX + shapeSize / 2, currY + shapeSize / 2);
+    ctx.rotate(45 * Math.PI / 180);
+
+    ctx.strokeRect(-shapeSize / 2, -shapeSize / 2, shapeSize, shapeSize);
+
+    ctx.restore();
+
+    ctx.lineWidth = y;
+    ctx.stroke();
+    ctx.closePath();
+}
+
+function drawSolidDiamond() {
+
+    ctx.beginPath();
+    ctx.moveTo(currX, currY);
+
+    shapeSize = document.getElementById("sizeRange").value;
+
+    q = document.getElementById("opacityRange").value; //gets opacity value
+    r = document.getElementById("redRange").value; //gets red value
+    g = document.getElementById("greenRange").value; // gets green value
+    b = document.getElementById("blueRange").value; // gets blue value
+    y = document.getElementById("brushRange").value; //gets line thickness value
+
+    ctx.globalAlpha = q;
+
+    shade = "rgb(" + r + ", " + g + ", " + b + ")";
+
+    if (gradOn) {
+        var grad = ctx.createLinearGradient(0, 0, currX + (shapeSize - (shapeSize / 20)), 0);
+        grad.addColorStop(0, shade);
+        grad.addColorStop(1, "white");
+        ctx.fillStyle = grad;
+    } else {
+        ctx.fillStyle = shade;
+    }
+
+    ctx.save();
+
+    ctx.translate(currX + shapeSize / 2, currY + shapeSize / 2);
+    ctx.rotate(45 * Math.PI / 180);
+
+    ctx.fillRect(-shapeSize / 2, -shapeSize / 2, shapeSize, shapeSize);
+    ctx.fill();
+    ctx.restore();
+
+    
+    ctx.closePath();
+}
+
+function drawOutlineTriangle() {
+    ctx.beginPath();
+    ctx.moveTo(currX, currY);
+
+    shapeSize = document.getElementById("sizeRange").value;
+
+    q = document.getElementById("opacityRange").value; //gets opacity value
+    r = document.getElementById("redRange").value; //gets red value
+    g = document.getElementById("greenRange").value; // gets green value
+    b = document.getElementById("blueRange").value; // gets blue value
+    y = document.getElementById("brushRange").value; //gets line thickness value
+
+    ctx.globalAlpha = q;
+
+    shade = "rgb(" + r + ", " + g + ", " + b + ")";
+
+    if (gradOn) {
+        var grad = ctx.createLinearGradient(0, 0, currX + (shapeSize - (shapeSize / 20)), 0);
+        grad.addColorStop(0, shade);
+        grad.addColorStop(1, "white");
+        ctx.strokeStyle = grad;
+    } else {
+        ctx.strokeStyle = shade;
+    }
+
+    ctx.lineTo(currX + (shapeSize / 2), currY + (shapeSize / 2));
+    ctx.lineTo(currX - (shapeSize / 2), currY + (shapeSize / 2));
+    ctx.lineTo(currX, currY);
+    ctx.lineWidth = y;
+    ctx.stroke();
+    ctx.closePath();
+}
+
+function drawSolidTriangle() {
+    ctx.beginPath();
+    ctx.moveTo(currX, currY);
+
+    shapeSize = document.getElementById("sizeRange").value;
+
+    q = document.getElementById("opacityRange").value; //gets opacity value
+    r = document.getElementById("redRange").value; //gets red value
+    g = document.getElementById("greenRange").value; // gets green value
+    b = document.getElementById("blueRange").value; // gets blue value
+    y = document.getElementById("brushRange").value; //gets line thickness value
+
+    ctx.globalAlpha = q;
+
+    shade = "rgb(" + r + ", " + g + ", " + b + ")";
+
+    if (gradOn) {
+        var grad = ctx.createLinearGradient(0, 0, currX + (shapeSize - (shapeSize / 20)), 0);
+        grad.addColorStop(0, shade);
+        grad.addColorStop(1, "white");
+        ctx.fillStyle = grad;
+    } else {
+        ctx.fillStyle = shade;
+    }
+
+    ctx.lineTo(currX + (shapeSize / 2), currY + (shapeSize / 2));
+    ctx.lineTo(currX - (shapeSize / 2), currY + (shapeSize / 2));
+    ctx.lineTo(currX, currY);
+
+    ctx.fill();
+    ctx.closePath();
 }
 
 
@@ -353,7 +568,7 @@ function undo() {
 }
 
 function save() {
-    document.getElementById("canvasimg").style.border = "2px solid";
+    document.getElementById("canvasimg").style.border = "1px solid";
     var dataURL = canvas.toDataURL();
     document.getElementById("canvasimg").src = dataURL;
     document.getElementById("canvasimg").style.display = "inline";
@@ -405,7 +620,6 @@ function findxy(res, e) {
         } else {
             if (squareSolid) {
                 drawSolidSquare();
-
             } else {
                 if (circleSolid) {
                     drawSolidCircle();
@@ -415,6 +629,22 @@ function findxy(res, e) {
                     } else {
                         if (circleOut) {
                             drawOutlineCircle();
+                        } else {
+                            if (diamondSolid) {
+                                drawSolidDiamond();
+                            } else {
+                                if (triangleSolid) {
+                                    drawSolidTriangle();
+                                } else {
+                                    if (diamondOut) {
+                                        drawOutlineDiamond();
+                                    } else {
+                                        if (triangleOut) {
+                                            drawOutlineTriangle();
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -428,7 +658,7 @@ function findxy(res, e) {
         flag = false;
         eraser = false;
     }
-    if (res === 'move') {
+    if (res === 'move' && line) {
         if (flag) {
             prevX = currX;
             prevY = currY;

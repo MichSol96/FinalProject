@@ -16,11 +16,12 @@ and open the template in the editor.
 
 
         <div id='content'>
-            <h1>Draw Away!</h1>
+            <h1>Color to Your Heart's Content!</h1>
             <p>
                 By default, line is selected, to change shapes, click on the shape you want. To pick the opacity or line thickness, 
                 you need to select it first and then pick the color you want to draw in. To clear the whole canvas, click the "clear"
-                button. To undo the last action, click the "undo" button.
+                button. To undo the last action, click the "undo" button. The gradient tool is off by default and will fade from whatever 
+                color you're drawing in to white when it's turned on.
 
             </p>
             <canvas id="theCanvas" width="1100" height="700">
@@ -49,6 +50,10 @@ and open the template in the editor.
                 <div id="circleSolid" onclick="selectShape(this)"><div id="insideCircleSolid"></div></div>
                 <div id="squareSolid" onclick="selectShape(this)"><div id="insideSquareSolid"></div></div>
                 <div id="line" onclick="selectShape(this)"><div id="insideLine"></div></div> 
+                <div id="triangleSolid" onclick="selectShape(this)"><div id="insideTriangleSolid"></div></div>
+                <div id="triangleOutline" onclick="selectShape(this)"><div id="triangleBorder"><div id="insideTriangleOutline"></div></div></div>
+                <div id="diamondSolid" onclick="selectShape(this)"><div id="insideDiamondSolid"></div></div>
+                <div id="diamondOutline" onclick="selectShape(this)"><div id="insideDiamondOutline"></div></div>
 
                 <div id="sizeSelection">Choose Size</div>
                 <input type="range" id="sizeRange" max="300" min="10" value="10" step="10">
