@@ -40,7 +40,7 @@ and open the template in the editor.
                 <div id="gradientSelection">Gradient</div>
                 <div id="gradientOff" onclick="selectGradient(this)">OFF</div>
                 <div id="gradientOn" onclick="selectGradient(this)">ON</div>
-                
+
                 <div id="brushSelection">Choose Thickness</div>
                 <input type="range" id="brushRange" max="14" min="2" value="2" step="1">
 
@@ -60,14 +60,16 @@ and open the template in the editor.
 
                 <div id="opacitySelction" >Choose Opacity</div>
                 <input type ="range" id="opacityRange" max ="1" min="0.1" value = "1" step="0.1">
-                
-                
 
-                
 
-                <input type="button" value="clear" id="clr" onclick="erase()">
-                <input type="button" value="undo" id="undo" onclick="undo()">
-                <input type="button" value="save" id="save" onclick="save()">
+
+
+                <div id="buttons">
+                    <input type="button" value="clear" id="clr" onclick="erase()">
+                    <input type="button" value="undo" id="undo" onclick="undo()">
+                    <input type="button" value="save" id="save" onclick="save()">
+                </div>
+
 
             </div>
 
